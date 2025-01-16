@@ -48,7 +48,20 @@ Asynchronous: Code execution continues without waiting for a task to complete (e
 
 
 Intermediate-Level Interview Questions (2+ Years Experience)
-Explain closures in JavaScript with an example.
+1. Explain closures in JavaScript with an example.
+A closure is a function that retains access to its lexical scope even when the function is executed outside of that scope. Closures allow functions to "remember" the environment in which they were created.
+  function outerFunction(outerVariable) {
+      return function innerFunction(innerVariable) {
+          console.log(`Outer Variable: ${outerVariable}, Inner Variable: ${innerVariable}`);
+      };
+  }
+  const newFunction = outerFunction("Hello");
+  newFunction("World"); // Output: Outer Variable: Hello, Inner Variable: World
+Here, innerFunction is a closure because it accesses outerVariable from outerFunction's scope even after outerFunction has finished executing.
+
+
+
+
 What are JavaScript promises, and how do they work?
 How is this keyword used in JavaScript?
 What are higher-order functions in JavaScript?
