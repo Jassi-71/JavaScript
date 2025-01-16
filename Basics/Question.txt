@@ -180,6 +180,12 @@ Example - const CounterModule = (function () {
         CounterModule.decrement(); // Count is now: 1
         console.log(CounterModule.count); // undefined (count is private)
 
+3. One-Time Initialization
+IIFEs can be used for setup or initialization tasks that need to be performed only once.
+Example - (function () {
+              console.log("Application initialized!");
+              // Perform setup tasks like attaching event listeners, configuring settings, etc.
+          })();
 
 
 
