@@ -190,9 +190,51 @@ Example - (function () {
 
 
 Advanced-Level Interview Questions (4+ Years Experience)
-Explain the JavaScript event loop and how it handles asynchronous operations.
-What is the difference between call(), apply(), and bind()?
-What are modules in JavaScript? How are ES6 modules different from CommonJS?
+1) Explain the JavaScript event loop and how it handles asynchronous operations.
+The JavaScript Event Loop is a mechanism that allows JavaScript to handle asynchronous operations in a non-blocking way, even though JavaScript is single-threaded. It ensures that the execution of code, user interactions, rendering, and events are handled smoothly.
+Key Components:
+Call Stack: A data structure that tracks function calls. Functions are added (pushed) to the stack when invoked and removed (popped) when execution is complete.
+Web APIs: Asynchronous tasks (e.g., setTimeout, AJAX calls) are delegated to the browser (or Node.js environment) via Web APIs.
+Callback Queue: A queue where callbacks from asynchronous operations are pushed once the operation completes.
+Event Loop: Monitors the call stack and callback queue. If the stack is empty, it pushes the next callback from the queue to the stack for execution.
+
+2) What is the difference between call(), apply(), and bind()?
+All three methods are used to control the this context of a function.
+1. call() - Invokes a function with a specified this value and arguments provided individually.
+Example - function greet(greeting) {
+              console.log(`${greeting}, ${this.name}`);
+          }
+          
+          const person = { name: "John" };
+          greet.call(person, "Hello"); // Output: Hello, John
+2. apply() - Similar to call(), but arguments are provided as an array.
+Example - greet.apply(person, ["Hi"]); // Output: Hi, John
+3. bind() - Returns a new function with a specified this value and optional arguments. Does not execute immediately.
+Example - const boundGreet = greet.bind(person, "Hey");
+          boundGreet(); // Output: Hey, John
+
+3) What are modules in JavaScript? How are ES6 modules different from CommonJS?
+Modules allow developers to break JavaScript code into smaller, reusable pieces. Each module has its own scope, and the code can be imported/exported as needed.
+CommonJS (Node.js)
+-> Used in Node.js.
+-> Uses require() to import and module.exports to export.
+-> Synchronous and not suited for browsers directly.
+Example - // CommonJS example
+          const fs = require('fs'); // Importing
+          module.exports = someFunction; // Exporting
+
+ES6 Modules
+-> Introduced in ECMAScript 2015 (ES6).
+-> Use import and export.
+-> Natively supported by modern browsers.
+-> Asynchronous and better suited for the web.
+Example - // ES6 example
+          export const greet = () => console.log("Hello!");
+          import { greet } from './module.js';
+          greet();
+
+
+
 What are Web APIs in JavaScript? Name a few commonly used ones.
 What is debouncing and throttling in JavaScript, and why are they important?
 What are proxies in JavaScript, and how do they work?
